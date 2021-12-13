@@ -1,0 +1,22 @@
+Final Project for EECE2140
+
+Game Overview
+
+Reversi is a strategy board game for two players, played on an 8 ×8 uncheckered board.
+There are 64 identical game pieces called disks, which are light on one side and dark on the
+other.
+
+The game begins with four disks placed in a square in the middle of the board, two facing
+light-up, and the other two with the dark side up (see Figure 1). The dark player makes the
+first move.
+
+Players take turns placing disks on the board with their assigned color facing up. Each
+player must place a disk in such a position that there exists at least one straight (horizontal,
+vertical, or diagonal) line between the new disk and another of her disks, with one or more
+opponent’s disks between them. After placing the disk, the player turns over (flips, captures)
+all the opponent’s disks lying on a straight line between the new disk and any of her disks.
+
+If one player cannot make a valid move, play passes back to the other player. When
+neither player can move, the game ends. This occurs when the board has filled up, or when
+one player has no more disks on the board. The player with more disks on the board at the
+end wins.
