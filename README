@@ -20,3 +20,5 @@ If one player cannot make a valid move, play passes back to the other player. Wh
 neither player can move, the game ends. This occurs when the board has filled up, or when
 one player has no more disks on the board. The player with more disks on the board at the
 end wins.
+
+Execute the main.py file to play.
