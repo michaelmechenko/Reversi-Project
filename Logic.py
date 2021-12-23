@@ -3,24 +3,24 @@ from Board import Board
 
 class Logic(Board):
     """class handling the logic of the game"""
-    def is_on_board(self, x, y):
+    def is_on_board(self, board, x, y):
         """returns whether the selection is on the board
         :param: int, int
         :return: boolean"""
-        return x >= 0 and x <= super.board_size and y >= 0 and y <= super.board_size
+        return x >= 0 and x <= board.board_size and y >= 0 and y <= board.board_size
     
-    def is_corner(self, x, y):
+    def is_corner(self, board, x, y):
         """returns true if the selection is a corner of the board
         :param: int, int
         :return: boolean"""
-        return (x == 0 and y == 0) or (x == super.board_size + 1 and y == 0) or (x == 0 and y == super.board_size + 1) or (x == super.board_size + 1 and y == super.board_size + 1)
+        return (x == 0 and y == 0) or (x == board.board_size + 1 and y == 0) or (x == 0 and y == board.board_size + 1) or (x == board.board_size + 1 and y == super.board_size + 1)
 
     def is_valid_move(self, board, tile, x_start, y_start):
         """returns false if the starting position is invalid,
         returns a list of possible moves otherwise
         :param: Board, str, int, int
         :return: Boolean, List"""
-        if (board.matrix[x_start][y_start] != ' ' or not self.is_on_board(x_start, y_start)):
+        if (board.matrix[x_start][y_start] != ' ' or not self.is_on_board(board, x_start, y_start)):
             return False
 
         board.matrix[x_start][y_start] = tile
@@ -36,17 +36,17 @@ class Logic(Board):
             x, y = x_start, y_start
             x += xdir
             y += ydir
-            if self.is_on_board(x, y) and board.matrix[x][y] == other_tile:
+            if self.is_on_board(board, x, y) and board.matrix[x][y] == other_tile:
                 x += xdir
                 y += ydir
-                if not self.is_on_board(x, y):
+                if not self.is_on_board(board, x, y):
                     continue
                 while board.matrix[x][y] == other_tile:
                     x += xdir
                     y += ydir
-                    if not self.is_on_board(x, y):
+                    if not self.is_on_board(board, x, y):
                         break
-                if not self.is_on_board(x, y):
+                if not self.is_on_board(board, x, y):
                         continue
                 if board.matrix[x][y] == tile:
                     while True:
@@ -139,7 +139,7 @@ class Logic(Board):
         :param: Board, str
         :return: list"""
         board_size_list = []
-        for i in range(board.board_size):
+        for i in range(1, board.board_size + 1):
             board_size_list.append(i)
 
         while True:
@@ -164,7 +164,7 @@ class Logic(Board):
         random.shuffle(possible_moves)
         
         for x, y in possible_moves:
-            if self.is_corner(x, y):
+            if self.is_corner(board, x, y):
                 return[x, y]
         
         best_score = -1

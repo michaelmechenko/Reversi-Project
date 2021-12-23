@@ -28,7 +28,7 @@ while True:
 
         else:
             main_board.draw_board
-            game.show_points(main_board)
+            game.show_points(main_board, player_tile, computer_tile)
             input("Press enter to continue.")
             x, y = game.get_computer_move(main_board, computer_tile)
             game.make_move(main_board, computer_tile, x, y)
